@@ -1,0 +1,22 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+
+# --- Research data artifacts (NEVER commit real histology/annotations) ---
+*.svs
+*.ndpi
+*.qptiff
+*.tif
+*.tiff
+*.node
+*.ele
+*.vtu
+*.npz
+
+# --- Generated demo output ---
+demo-data/output/

@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "qupath-corpus-builder"
+version = "0.1.0"
+description = "Turn QuPath polygon annotations + whole-slide images into aligned image/label training pairs for segmentation fine-tuning"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [{name = "Adam Haneberg"}]
+keywords = ["qupath", "histology", "segmentation", "training-data", "pseudo-label"]
+dependencies = [
+    "numpy>=1.24",
+    "opencv-python-headless>=4.8",
+    "pillow>=9",
+]
+
+[project.optional-dependencies]
+svs = ["openslide-python>=1.3"]          # whole-slide .svs/.ndpi support
+classifier = ["torch>=2", "timm>=0.9"]   # CNN pseudo-labeler for unlabelled slides
+
+[project.scripts]
+qupath-corpus = "qupath_corpus.build_corpus:main"
+qupath-corpus-demo = "qupath_corpus.demo:main"
+[tool.setuptools.packages.find]
+where = ["src"]
